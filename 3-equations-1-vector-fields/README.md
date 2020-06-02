@@ -63,9 +63,9 @@ function run!(sim::Simulation{DT}) where {DT}
     return sim.x
 end
 ```
-Here we also need the solution data type, i.e., the `DT` parameter of the `Simulation` type.
+Here we also need the solution data type, i.e., the `DT` parameter of the `Simulation` type, in order to instantiate the temporary vector field vector.
+Note that we do not need to declare the vector field function type `FT` as function parameter in order to obtain optimised code. `FT` being specified as type parameter is sufficient.
 In the loop, we evaluate the vector field function, that is stored in the `f` field of the `Simulation` type.
 
 With that, we can prescribe arbitrary vector fields and are not restricted to the equation of the pendulum.
-However, as a dynamical system is characterised not only by its vector field but also by its initial condition, it seems worthwhile to abstract this concept into a separate type.
-
+However, as a dynamical system is characterised not only by its vector field but also by its initial condition, it seems worthwhile to abstract this concept into a separate `Equation` type.

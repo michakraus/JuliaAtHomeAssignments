@@ -67,6 +67,7 @@ include("simulation.jl")
 
 end
 ```
+Note that the order in which the export statement and the actual definition of e.g. the `Simulation` type appear does not matter.
 
 In order to run the simulation, we create a new file `scripts/pendulum.jl`:
 ```julia; eval=false
