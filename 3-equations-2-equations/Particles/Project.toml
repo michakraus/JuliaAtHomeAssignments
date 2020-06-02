@@ -1,0 +1,7 @@
+name = "Particles"
+uuid = "b097825d-39ce-45b2-a4ab-941e2c2df7e8"
+authors = ["Michael Kraus <michael.kraus@ipp.mpg.de>"]
+version = "0.1.0"
+
+[deps]
+OffsetArrays = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
