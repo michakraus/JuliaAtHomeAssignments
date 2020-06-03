@@ -68,4 +68,4 @@ Note that we do not need to declare the vector field function type `FT` as funct
 In the loop, we evaluate the vector field function, that is stored in the `f` field of the `Simulation` type.
 
 With that, we can prescribe arbitrary vector fields and are not restricted to the equation of the pendulum.
-However, as a dynamical system is characterised not only by its vector field but also by its initial condition, it seems worthwhile to abstract this concept into a separate `Equation` type.
+However, as an initial value problem is characterised not only by its vector field but also by its initial condition, it seems worthwhile to abstract this concept into a separate `Equation` type.
