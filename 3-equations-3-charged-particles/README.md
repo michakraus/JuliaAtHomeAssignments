@@ -32,10 +32,10 @@ ni = 5      # number of initial conditions
 x₀ = hcat(rand(ni) .* 2 .- 1, rand(ni) .* 2 .- 1, zeros(ni), rand(ni) .- 0.5, rand(ni) .- 0.5, ones(ni))'
 
 # electric field
-E(x::Vector{DT}) where {DT} = [zero(DT), zero(DT), cos(2π*x[3])]
+E(x::Vector{DT}) where {DT} = DT[0, 0, cos(2π*x[3])]
 
 # magnetic field
-B(x::Vector{DT}) where {DT} = [zero(DT), zero(DT), one(DT)]
+B(x::Vector{DT}) where {DT} = DT[0, 0, 1]
 
 # vector field
 function lorentz_force!(ż, z)
