@@ -7,3 +7,6 @@ struct Equation{DT <: Number, FT <: Function}
         new{DT,FT}(f, Array(x₀))
     end
 end
+
+ndims(equ::Equation) = length(axes(equ.x₀,1))
+nics(equ::Equation) = length(axes(equ.x₀,2))

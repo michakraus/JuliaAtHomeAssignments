@@ -43,7 +43,7 @@ end
 
 We can add two more convenience functions in analogy to Julia's `eachindex` function: 
 ```julia; eval=false
-eachtimestep(sim::Simulation) = 1:ntimesteps(sim)
+eachtimestep(sim::Simulation) = axes(sim.x,3)[1:end]
 eachic(sim::Simulation) = axes(sim.x,2)
 ```
 

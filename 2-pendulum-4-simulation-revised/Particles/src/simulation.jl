@@ -13,7 +13,7 @@ end
 ntimesteps(sim::Simulation) = lastindex(sim.x,3)
 nics(sim::Simulation) = lastindex(sim.x,2)
 
-eachtimestep(sim::Simulation) = 1:ntimesteps(sim)
+eachtimestep(sim::Simulation) = axes(sim.x,3)[1:end]
 eachic(sim::Simulation) = axes(sim.x,2)
 
 

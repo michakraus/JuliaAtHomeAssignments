@@ -23,12 +23,12 @@ struct Simulation{DT <: Number, FT <: Function}
     end
 end
 
+ndims(sim::Simulation) = ndims(sim.equ)
+nics(sim::Simulation) = nics(sim.equ)
 ntimesteps(sim::Simulation) = lastindex(sim.x,3)
-nics(sim::Simulation) = lastindex(sim.x,2)
-ndims(sim::Simulation) = lastindex(sim.x,1)
 
-eachtimestep(sim::Simulation) = 1:ntimesteps(sim)
 eachic(sim::Simulation) = axes(sim.x,2)
+eachtimestep(sim::Simulation) = axes(sim.x,3)[1:end]
 
 
 function run!(sim::Simulation{DT}) where {DT}
