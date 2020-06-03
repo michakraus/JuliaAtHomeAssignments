@@ -82,7 +82,7 @@ plt = plot3d(
     zlim = zlim,
     title = "Charged Particles",
     legend = false,
-    marker=5,
+    marker = 5,
     size = (800, 600)
 )
 
