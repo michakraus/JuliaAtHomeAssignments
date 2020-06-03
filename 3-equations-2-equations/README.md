@@ -73,7 +73,7 @@ end
 Which version is preferable depends on the situation. The first version is more explicit and somewhat stricter, however, propagation of the types of some member field's inner data structures can pollute the type parameters of outer types, especially in composition-rich codes.
 We will see later on, that storing these types is not always strictly necessary.
 
-The `run!` method is only mildly change, namely calling `sim.equ.f` instead of `sim.f`:
+The `run!` method requires only a small change, namely calling `sim.equ.f` instead of `sim.f`:
 ```julia; eval=false
 function run!(sim::Simulation{DT}) where {DT}
     ẋ = zeros(DT, ndims(sim))

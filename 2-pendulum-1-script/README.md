@@ -71,7 +71,7 @@ The script is stored in the folder `prototyping/pendulum.jl`.
 ### Limitations
 
 While this script does the job, it does have several issues and limitations:
-- We are using global variables, preventing Julia from generating efficient, optimised code.
+- The use of global variables prevents Julia from generating efficient, optimised code.
 - We hardcoded the integration scheme and the vector field of the equation, none of which can be easily changed.
 - More generally speaking, none of the code we have written is resusable in any sane way.
 
@@ -81,7 +81,7 @@ There are also some minor annoyances:
 
 The optimisation issue could be remedied by putting `const` in front of the parameter names. However, it seems better practice to put all parameters and simulation-relevant data structures into a `struct` which we will call `Simulation`.
 
-The integrator and the vector field can be provided by individual functions, which can be stored in the `Simulation` composite type so they can be replaced easily.
+The integrator and the vector field can be provided by individual functions, which can be stored in the `Simulation` composite type so they can be replaced easily. Even better, we could implement individual types for different integrators (which can also store temporary arrays, etc.) and dispatch some kind of `integrate_step!` function on the integrators.
 
 These measures will lead to a better code structure and code that can easily be reused later on.
 

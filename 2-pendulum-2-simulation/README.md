@@ -53,7 +53,7 @@ function run!(sim::Simulation)
     return sim.x
 end
 ```
-which takes an instance `sim` of `Simulation` as parameter, applies the time integrator for `sim.nt` time steps and stores the solution in `sim.x`.
+which takes an instance `sim` of `Simulation` as argument, applies the time integrator for `sim.nt` time steps and stores the solution in `sim.x`.
 For convenience, the `run!` function returns the solution array.
 Note that the number of samples is not stored explicitly, but inferred from the solution array size.
 
