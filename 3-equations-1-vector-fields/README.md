@@ -55,7 +55,7 @@ We need this to create a temporary array in `run!`, that holds the vector field:
 function run!(sim::Simulation{DT}) where {DT}
     ẋ = zeros(DT, ndims(sim))
     for n in eachtimestep(sim)
-        for i in eachic(sim)
+        for i in eachsample(sim)
             sim.f(ẋ, sim.x[:,i,n-1])
             sim.x[:,i,n] .= sim.x[:,i,n-1] .+ sim.Δt .* ẋ
         end

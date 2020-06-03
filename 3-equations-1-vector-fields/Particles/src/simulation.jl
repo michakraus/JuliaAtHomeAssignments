@@ -12,17 +12,17 @@ struct Simulation{DT <: Number, FT <: Function}
 end
 
 ntimesteps(sim::Simulation) = lastindex(sim.x,3)
-nics(sim::Simulation) = lastindex(sim.x,2)
+nsamples(sim::Simulation) = lastindex(sim.x,2)
 ndims(sim::Simulation) = lastindex(sim.x,1)
 
 eachtimestep(sim::Simulation) = axes(sim.x,3)[1:end]
-eachic(sim::Simulation) = axes(sim.x,2)
+eachsample(sim::Simulation) = axes(sim.x,2)
 
 
 function run!(sim::Simulation{DT}) where {DT}
     ẋ = zeros(DT, ndims(sim))
     for n in eachtimestep(sim)
-        for i in eachic(sim)
+        for i in eachsample(sim)
             sim.f(ẋ, sim.x[:,i,n-1])
             sim.x[:,i,n] .= sim.x[:,i,n-1] .+ sim.Δt .* ẋ
         end

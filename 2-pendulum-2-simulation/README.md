@@ -37,7 +37,7 @@ struct Simulation{DT <: Number}
 end
 ```
 The `Simulation` type has one constructor that takes the initial conditons `x₀`, time step `Δt` and the number of time steps to compute `nt`.
-We expect the initial conditions to be a 2d array, where the first dimension holds the degrees of freedom, and the second dimension holds different initial conditions.
+We expect the initial conditions to be a 2d array, where the first dimension holds the degrees of freedom, and the second dimension holds different samples.
 Based on the size of the initial condition array, we create a 3d solution array that has the same first two dimensions as the initial conditions and the number of time steps as the third dimension.
 
 At first, we proceed by supporting only one specific time-stepping scheme and one specific equation, in this case the explicit Euler method and the pendulum example.
@@ -55,7 +55,7 @@ end
 ```
 which takes an instance `sim` of `Simulation` as parameter, applies the time integrator for `sim.nt` time steps and stores the solution in `sim.x`.
 For convenience, the `run!` function returns the solution array.
-Note that the number of initial conditions is not stored explicitly, but inferred from the solution array size.
+Note that the number of samples is not stored explicitly, but inferred from the solution array size.
 
 In order to conveniently load the Particle package, export `Simulation` and `run!` in the module in `src/Particles.jl`:
 ```julia; eval=false
@@ -77,10 +77,10 @@ using Particles
 # parameters
 Δt = 0.1    # time step size
 nt = 100    # number of time steps
-ni = 5      # number of initial conditions
+ns = 5      # number of samples
 
 # random initial conditions
-x₀ = hcat(rand(ni) .* 2π, rand(ni) .* 2 .- 1)'
+x₀ = hcat(rand(ns) .* 2π, rand(ns) .* 2 .- 1)'
 
 # create Simulation instance
 sim = Simulation(x₀, Δt, nt)

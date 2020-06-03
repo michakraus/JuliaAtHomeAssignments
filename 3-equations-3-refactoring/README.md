@@ -19,12 +19,12 @@ We implemented some convenience functions for the `Simulation` type, that return
 Some of these functions should rather be implemented for the `Equation` type, specifically,
 ```julia; eval=false
 ndims(equ::Equation) = length(axes(equ.x₀,1))
-nics(equ::Equation) = length(axes(equ.x₀,2))
+nsamples(equ::Equation) = length(axes(equ.x₀,2))
 ```
 
 As these functions make also sense when applied to a `Simulation` instance, we do not remove the corresponding methods, but change them to
 ```julia; eval=false
 ndims(sim::Simulation) = ndims(sim.equ)
-nics(sim::Simulation) = nics(sim.equ)
+nsamples(sim::Simulation) = nsamples(sim.equ)
 ```
 This is a typical example of how composition is used in Julia.

@@ -9,4 +9,4 @@ struct Equation{DT <: Number, FT <: Function}
 end
 
 ndims(equ::Equation) = length(axes(equ.x₀,1))
-nics(equ::Equation) = length(axes(equ.x₀,2))
+nsamples(equ::Equation) = length(axes(equ.x₀,2))

@@ -11,15 +11,15 @@ struct Simulation{DT <: Number}
 end
 
 ntimesteps(sim::Simulation) = lastindex(sim.x,3)
-nics(sim::Simulation) = lastindex(sim.x,2)
+nsamples(sim::Simulation) = lastindex(sim.x,2)
 
 eachtimestep(sim::Simulation) = axes(sim.x,3)[1:end]
-eachic(sim::Simulation) = axes(sim.x,2)
+eachsample(sim::Simulation) = axes(sim.x,2)
 
 
 function run!(sim::Simulation)
     for n in eachtimestep(sim)
-        for i in eachic(sim)
+        for i in eachsample(sim)
             sim.x[1,i,n] = sim.x[1,i,n-1] + sim.Δt * sim.x[2,i,n-1]
             sim.x[2,i,n] = sim.x[2,i,n-1] - sim.Δt * sin(sim.x[1,i,n-1])
         end

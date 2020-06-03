@@ -26,10 +26,10 @@ using Particles
 # parameters
 Δt = 0.1    # time step size
 nt = 100    # number of time steps
-ni = 5      # number of initial conditions
+ns = 5      # number of samples
 
 # random initial conditions
-x₀ = hcat(rand(ni) .* 2 .- 1, rand(ni) .* 2 .- 1, zeros(ni), rand(ni) .- 0.5, rand(ni) .- 0.5, ones(ni))'
+x₀ = hcat(rand(ns) .* 2 .- 1, rand(ns) .* 2 .- 1, zeros(ns), rand(ns) .- 0.5, rand(ns) .- 0.5, ones(ns))'
 
 # electric field
 E(x::Vector{DT}) where {DT} = DT[0, 0, cos(2π*x[3])]
@@ -74,9 +74,9 @@ xlim = (-2, +2)
 ylim = (-2, +2)
 zlim = ( 0, 20)
 
-# create empty 3d plot with ni empty series
+# create empty 3d plot with ns empty series
 plt = plot3d(
-    ni,
+    ns,
     xlim = xlim,
     ylim = ylim,
     zlim = zlim,
@@ -88,7 +88,7 @@ plt = plot3d(
 
 # plot solutions
 for j in axes(x,3)
-    for i in 1:ni
+    for i in 1:ns
         push!(plt, i, x[1,i,j], x[2,i,j], x[3,i,j])
     end
 end

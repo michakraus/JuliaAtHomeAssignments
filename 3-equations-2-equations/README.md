@@ -78,7 +78,7 @@ The `run!` method is only mildly change, namely calling `sim.equ.f` instead of `
 function run!(sim::Simulation{DT}) where {DT}
     ẋ = zeros(DT, ndims(sim))
     for n in eachtimestep(sim)
-        for i in eachic(sim)
+        for i in eachsample(sim)
             sim.equ.f(ẋ, sim.x[:,i,n-1])
             sim.x[:,i,n] .= sim.x[:,i,n-1] .+ sim.Δt .* ẋ
         end
