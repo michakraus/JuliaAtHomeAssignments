@@ -73,7 +73,7 @@ The script is stored in the folder `prototyping/pendulum.jl`.
 While this script does the job, it does have several issues and limitations:
 - We are using global variables, preventing Julia from generating efficient, optimised code.
 - We hardcoded the integration scheme and the vector field of the equation, none of which can be easily changed.
-- More generally speaking, none of the code we have written is not really resusable in any sane way.
+- More generally speaking, none of the code we have written is resusable in any sane way.
 
 There are also some minor annoyances:
 - The indexing of our solution array starts at `1` although here `0` would be much more natural, with the index-0 entry storing the initial condition.
