@@ -40,9 +40,6 @@ The results can be visualised with *Plots.jl*
 # load Plots package
 using Plots
 
-# select backend (default: GR)
-plotlyjs()
-
 # set plot ranges
 xlim = (-π, +π)
 ylim = (-3, +3)

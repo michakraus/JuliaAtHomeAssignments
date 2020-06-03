@@ -16,11 +16,9 @@ sim = Simulation(x₀, Δt, nt)
 # run simulation
 x = run!(sim)
 
+
 # load Plots package
 using Plots
-
-# select backend (default: GR)
-plotlyjs()
 
 # set plot ranges
 xlim = (-π, +π)
