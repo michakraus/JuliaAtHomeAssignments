@@ -12,8 +12,8 @@ struct Simulation{DT <: Number, FT <: Function}
 end
 
 ntimesteps(sim::Simulation) = lastindex(sim.x,3)
-nsamples(sim::Simulation) = lastindex(sim.x,2)
-ndims(sim::Simulation) = lastindex(sim.x,1)
+nsamples(sim::Simulation) = length(axes(sim.x,2))
+ndims(sim::Simulation) = length(axes(sim.x,1))
 
 eachtimestep(sim::Simulation) = axes(sim.x,3)[1:end]
 eachsample(sim::Simulation) = axes(sim.x,2)
