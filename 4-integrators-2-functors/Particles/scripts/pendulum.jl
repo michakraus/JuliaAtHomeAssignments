@@ -45,7 +45,7 @@ plt = contour(
 )
 
 # plot solutions
-for i in 1:ns
+for i in axes(x,2)
     scatter!(plt, (x[1,i,:] .+ π) .% 2π .- π, x[2,i,:], marker=5)
 end
 
