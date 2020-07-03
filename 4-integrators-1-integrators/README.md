@@ -126,13 +126,6 @@ It has the aforementioned interface, computes the vector field `ẋ` on the old 
 
 ### Discussion
 
-In the design of the interface we made some choices for which there could be alternatives.
-
-All temporary arrays needed to compute a time step either need to be allocated in the `integrate_step!` method (which often induces overhead as this method is called repeatedly) or stored as a field in the corresponding integrator type (as we did above).
-The latter choice implies that an integrator instance is tied to a specific `Equation` as the size of e.g. the temporary vector that holds the vector field depends on the equation.
-Therefore one could argue that the `Equation` instance should be a field in the `Integrator` rather than the `Simulation`.
-Going one step further, we might not want to store the `Equation` in `Integrator` but only the vector field function `f`.
-
 The way we implemented the `run!` function does not directly access the `equ` or `int` field of the `Simulation`. 
 If this is also true elsewhere, there is no need to store the equation and integrator types and the `Simulation` type can be simplified as follows:
 ```julia; eval=false

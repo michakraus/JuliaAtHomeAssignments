@@ -36,14 +36,11 @@ end
 # create an Equation instance
 equ = Equation(lorentz_force!, x₀)
 
-# create an Integrator instance
-int = ExplicitEuler(equ, Δt)
-
 # create Simulation instance
-sim = Simulation(equ, int, nt)
+sim = Simulation(equ, ExplicitEuler, Δt, nt)
 
 # run simulation
-x = run!(sim)
+x = sim()
 
 
 # load Plots package
@@ -68,7 +65,7 @@ plt = plot3d(
 
 # plot solutions
 for j in axes(x,3)
-    for i in 1:ns
+    for i in axes(x,2)
         push!(plt, i, x[1,i,j], x[2,i,j], x[3,i,j])
     end
 end

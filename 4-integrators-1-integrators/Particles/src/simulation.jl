@@ -27,7 +27,9 @@ function run!(sim::Simulation{DT}) where {DT}
             # x₁ = @view sim.x[:,i,n]
             # integrate_step!(sim.int, sim.equ, x₀, x₁)
 
-            integrate_step!(sim.int, sim.equ, view(sim.x, :, i ,n-1), view(sim.x, :, i, n))
+            # integrate_step!(sim.int, sim.equ, view(sim.x, :, i ,n-1), view(sim.x, :, i, n))
+
+            @views integrate_step!(sim.int, sim.equ, sim.x[:,i,n-1], sim.x[:,i,n])
         end
     end
     return sim.x
